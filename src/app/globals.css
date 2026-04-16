@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN TOKENS — Obsidian Gold (customizado)
+   ============================================================ */
+
+@theme {
+  --color-bg-deep: #050505;
+  --color-bg-base: #0A0A0A;
+  --color-bg-surface: #111111;
+  --color-bg-elevated: #1A1A1A;
+  --color-accent: #D4A853;
+  --color-accent-soft: #C49B45;
+  --color-text-0: #FAF5EB;
+  --color-text-1: #C4B99A;
+  --color-text-2: #7A7260;
+  --color-text-3: #5A5440;
+}
+
+:root {
+  --bg-deep: #050505;
+  --bg-base: #0A0A0A;
+  --bg-surface: #111111;
+  --bg-elevated: #1A1A1A;
+
+  --accent: #D4A853;
+  --accent-bright: #F0D080;
+  --accent-soft: #C49B45;
+  --accent-dark: #8B6914;
+  --accent-glow: rgba(212, 168, 83, 0.08);
+  --accent-glow-md: rgba(212, 168, 83, 0.12);
+  --accent-glow-hi: rgba(212, 168, 83, 0.25);
+
+  --text-0: #FAF5EB;
+  --text-1: #C4B99A;
+  --text-2: #7A7260;
+  --text-3: #5A5440;
+
+  --border: rgba(212, 168, 83, 0.06);
+  --border-hover: rgba(212, 168, 83, 0.14);
+
+  --gold-gradient: linear-gradient(135deg, #F0D080 0%, #D4A853 30%, #8B6914 60%, #D4A853 80%, #F0D080 100%);
+  --gold-text: linear-gradient(135deg, #F5E0A0, #D4A853, #8B6914, #D4A853, #F5E0A0);
+  --gold-glow: 0 0 30px rgba(212, 168, 83, 0.3), 0 0 60px rgba(212, 168, 83, 0.1);
+
+  --section-gap: 160px;
+  --card-padding: 40px;
+  --container-max: 1100px;
+  --radius: 16px;
+  --radius-sm: 8px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--body-font), system-ui, sans-serif;
+  color: var(--text-0);
+  background: var(--bg-deep);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+::selection { background: rgba(212, 168, 83, 0.2); color: var(--text-0); }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(212, 168, 83, 0.1); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent-soft); }
+
+/* ============================================================
+   UTILITY CLASSES
+   ============================================================ */
+
+.container-main {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (min-width: 768px) {
+  .container-main { padding: 0 40px; }
+}
+
+@media (min-width: 1200px) {
+  .container-main { padding: 0 24px; }
+}
+
+.gold-metallic {
+  background: var(--gold-text);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gold-border {
+  border-image: var(--gold-gradient) 1;
+}
+
+.section-padding {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+.glass-card {
+  background: rgba(212, 168, 83, 0.04);
+  border: 1px solid rgba(212, 168, 83, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius);
+  transition: all 0.3s var(--ease);
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 168, 83, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+
+@keyframes grain-shift {
+  0% { background-position: 0 0; }
+  25% { background-position: -80px 40px; }
+  50% { background-position: 40px -60px; }
+  75% { background-position: -40px 80px; }
+}
+
+body.nav-open { overflow: hidden; }
