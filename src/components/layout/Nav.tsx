@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { NAV_LINKS } from '@/lib/constants'
 import { MobileMenu } from './MobileMenu'
 
@@ -39,9 +40,9 @@ export function Nav() {
         style={{
           zIndex: 100,
           height: '64px',
-          background: scrolled ? 'rgba(5, 5, 5, 0.85)' : 'transparent',
-          backdropFilter: scrolled ? 'blur(12px)' : 'none',
-          WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
+          background: scrolled || menuOpen ? 'rgba(5, 5, 5, 0.85)' : 'transparent',
+          backdropFilter: scrolled || menuOpen ? 'blur(12px)' : 'none',
+          WebkitBackdropFilter: scrolled || menuOpen ? 'blur(12px)' : 'none',
           borderBottom: scrolled ? '1px solid var(--border)' : '1px solid transparent',
         }}
       >
@@ -51,15 +52,17 @@ export function Nav() {
         >
           <a
             href="#"
-            className="transition-colors"
-            style={{
-              fontFamily: 'var(--heading-font)',
-              fontWeight: 600,
-              fontSize: '1.1rem',
-              color: 'var(--text-0)',
-            }}
+            className="transition-opacity hover:opacity-80 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)] rounded"
+            aria-label="Lucas Pavin - ir para o topo"
           >
-            LP
+            <Image
+              src="/images/logo.png"
+              alt="Lucas Pavin"
+              width={48}
+              height={30}
+              priority
+              style={{ height: '30px', width: 'auto', display: 'block' }}
+            />
           </a>
 
           <div className="hidden md:flex items-center gap-8">
@@ -80,30 +83,52 @@ export function Nav() {
           </div>
 
           <button
-            className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-1.5"
+            className="md:hidden relative"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
             aria-expanded={menuOpen}
+            style={{
+              width: '44px',
+              height: '44px',
+              zIndex: 110,
+              background: 'transparent',
+              border: 'none',
+              cursor: 'pointer',
+            }}
           >
             <span
-              className="block w-5 h-[1.5px] transition-all duration-300 origin-center"
+              className="absolute block transition-all duration-300"
               style={{
                 background: 'var(--text-1)',
-                transform: menuOpen ? 'translateY(3.75px) rotate(45deg)' : 'none',
+                width: '20px',
+                height: '1.5px',
+                left: '12px',
+                top: '16px',
+                transform: menuOpen ? 'translateY(6px) rotate(45deg)' : 'translateY(0) rotate(0)',
+                transformOrigin: 'center',
               }}
             />
             <span
-              className="block w-5 h-[1.5px] transition-all duration-300"
+              className="absolute block transition-all duration-300"
               style={{
                 background: 'var(--text-1)',
+                width: '20px',
+                height: '1.5px',
+                left: '12px',
+                top: '22px',
                 opacity: menuOpen ? 0 : 1,
               }}
             />
             <span
-              className="block w-5 h-[1.5px] transition-all duration-300 origin-center"
+              className="absolute block transition-all duration-300"
               style={{
                 background: 'var(--text-1)',
-                transform: menuOpen ? 'translateY(-3.75px) rotate(-45deg)' : 'none',
+                width: '20px',
+                height: '1.5px',
+                left: '12px',
+                top: '28px',
+                transform: menuOpen ? 'translateY(-6px) rotate(-45deg)' : 'translateY(0) rotate(0)',
+                transformOrigin: 'center',
               }}
             />
           </button>

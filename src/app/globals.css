@@ -147,4 +147,8 @@ body {
   75% { background-position: -40px 80px; }
 }
 
-body.nav-open { overflow: hidden; }
+body.nav-open {
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: contain;
+}

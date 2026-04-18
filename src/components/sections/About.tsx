@@ -5,6 +5,7 @@ import { ScrollReveal } from '@/components/effects/ScrollReveal'
 
 const badges = ['Mobile-First', 'Performance', 'SEO', 'Otimização para IA']
 
+
 export function About() {
   return (
     <section

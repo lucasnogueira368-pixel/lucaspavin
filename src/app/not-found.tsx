@@ -16,14 +16,14 @@ export default function NotFound() {
         className="mt-4 font-[family-name:var(--body-font)] text-[var(--text-1)]"
         style={{ fontSize: '1.05rem' }}
       >
-        Pagina nao encontrada
+        Página não encontrada
       </p>
       <Link
         href="/"
         className="mt-8 font-[family-name:var(--body-font)] text-[var(--accent)] hover:text-[var(--accent-soft)] transition-colors"
         style={{ fontSize: '0.95rem' }}
       >
-        Voltar ao inicio
+        Voltar ao início
       </Link>
     </main>
   )

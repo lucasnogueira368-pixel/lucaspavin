@@ -6,34 +6,40 @@ import { ScrollReveal } from '@/components/effects/ScrollReveal'
 
 const differentials = [
   {
-    icon: 'Zap',
-    title: 'Performance Máxima',
-    description: 'PageSpeed 90+ garantido. Seu site carrega rápido em qualquer dispositivo.',
+    icon: 'Smartphone',
+    title: 'Mobile-First',
+    metric: '80% do tráfego brasileiro vem do celular',
+    description: 'Design pensado primeiro pro mobile, depois escalado pra desktop. Zero adaptação forçada.',
   },
   {
-    icon: 'Palette',
-    title: 'Design Exclusivo',
-    description: 'Cada projeto é único. Zero templates, 100% personalizado para seu negócio.',
+    icon: 'Zap',
+    title: 'Performance',
+    metric: 'PageSpeed 90+ garantido',
+    description: 'Imagens otimizadas, código enxuto, hospedagem rápida. Carrega em menos de 2 segundos em 4G.',
   },
   {
     icon: 'Search',
-    title: 'SEO Completo',
-    description: 'Otimizado para Google e buscas por IA (ChatGPT, Gemini, Perplexity).',
+    title: 'SEO + GEO',
+    metric: 'Visível no Google e nas buscas por IA',
+    description: 'Meta tags, schema.org, sitemap e markup semântico. Seu site encontrado no Google, ChatGPT, Perplexity e Gemini.',
   },
   {
-    icon: 'Smartphone',
-    title: 'Mobile-First',
-    description: 'Pensado primeiro para celular, perfeito em qualquer tela.',
+    icon: 'Heart',
+    title: 'Atendimento Exclusivo',
+    metric: 'Cada projeto tratado como único',
+    description: 'Nada de modelo pronto ou atendimento em massa. Converso direto com você, entendo seu negócio e adapto tudo pra sua realidade.',
   },
   {
-    icon: 'Clock',
-    title: 'Entrega Rápida',
-    description: 'Seu site profissional pronto em 5 dias úteis.',
+    icon: 'PenTool',
+    title: 'Copy que Converte',
+    metric: 'Estrutura pensada pra vender, não só mostrar',
+    description: 'Headlines, CTAs e ordem das seções que guiam o visitante até a ação.',
   },
   {
-    icon: 'Code',
-    title: 'Código Próprio',
-    description: 'Desenvolvimento do zero, sem WordPress ou construtores genéricos. Performance e liberdade total.',
+    icon: 'BarChart3',
+    title: 'Dados em Tempo Real',
+    metric: 'GA4 + Meta Pixel + Search Console',
+    description: 'Você vê quantos entraram, de onde vieram e o que clicaram. Decisão baseada em dado.',
   },
 ]
 
@@ -62,9 +68,9 @@ export function Differentials() {
           </h2>
         </ScrollReveal>
 
-        <div className="mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {differentials.map((diff, i) => (
-            <ScrollReveal key={diff.title} delay={0.1 + i * 0.06}>
+            <ScrollReveal key={diff.title} delay={0.08 + i * 0.06}>
               <DifferentialCard {...diff} />
             </ScrollReveal>
           ))}

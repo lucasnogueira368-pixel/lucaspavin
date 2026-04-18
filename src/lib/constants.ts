@@ -1,6 +1,6 @@
 export const SITE_URL = 'https://lucaspavin.com.br'
-export const SITE_TITLE = 'Lucas Pavin | Desenvolvedor Web | Sites Profissionais'
-export const SITE_DESCRIPTION = 'Desenvolvedor web especializado em landing pages de alta performance. Design exclusivo, SEO completo e otimizacao para IA. Seu site pronto em 5 dias uteis.'
+export const SITE_TITLE = 'Lucas Pavin | Desenvolvedor Web | Landing Pages Profissionais'
+export const SITE_DESCRIPTION = 'Desenvolvedor web especializado em landing pages profissionais para negócios locais. Design exclusivo, PageSpeed 90+, SEO completo e otimização para IA. Seu site pronto em 5 dias úteis.'
 
 export const WHATSAPP_NUMBER = '5511965432623'
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Oi Lucas, vi seu portfólio e tenho interesse em um site profissional')}`
