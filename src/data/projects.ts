@@ -40,7 +40,7 @@ export const projects: Project[] = [
     objective: 'Criar presença digital que refletisse a qualidade do atendimento.',
     result: 'Site responsivo com galeria, depoimentos e agendamento via WhatsApp.',
     url: 'https://shiba-petcare.netlify.app/',
-    scores: { performance: 98, accessibility: 95, bestPractices: 100, seo: 100 },
+    scores: { performance: 99, accessibility: 95, bestPractices: 100, seo: 100 },
     slides: ['/images/projects/shiba-petcare.webp'],
   },
   {
@@ -52,8 +52,7 @@ export const projects: Project[] = [
     objective: 'Presença digital profissional para atrair tutores exigentes.',
     result: 'LP com galeria, FAQ e agendamento, visual alinhado ao branding.',
     url: 'https://www.patasdecasaessence.com.br/',
-    // PLACEHOLDER: scores usando valores da Mona (ver ***)
-    scores: { performance: 96, accessibility: 95, bestPractices: 100, seo: 100 },
+    scores: { performance: 96, accessibility: 91, bestPractices: 100, seo: 100 },
     slides: ['/images/projects/patas-de-casa.webp'],
   },
   // Para adicionar novo projeto:

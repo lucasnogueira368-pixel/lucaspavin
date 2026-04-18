@@ -48,14 +48,8 @@ export function Projects() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
 
-                {/* Desktop: 2 colunas */}
-                <div className="hidden md:grid gap-12" style={{ gridTemplateColumns: '1fr 1fr' }}>
-                  <ProjectCarousel slides={project.slides} name={project.name} url={project.url} />
-                  <ProjectDescription project={project} />
-                </div>
-
-                {/* Mobile: stack vertical */}
-                <div className="md:hidden flex flex-col gap-6">
+                {/* Responsive: mobile stack, desktop 2 cols */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
                   <ProjectCarousel slides={project.slides} name={project.name} url={project.url} />
                   <ProjectDescription project={project} />
                 </div>

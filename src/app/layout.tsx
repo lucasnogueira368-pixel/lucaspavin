@@ -7,19 +7,22 @@ import './globals.css'
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--heading-font',
-  weight: ['400', '500', '600', '700'],
+  weight: ['600', '700'],
+  display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--body-font',
-  weight: ['300', '400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
+  display: 'swap',
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--label-font',
-  weight: ['400', '500'],
+  weight: ['500'],
+  display: 'swap',
 })
 
 const jsonLd = {
