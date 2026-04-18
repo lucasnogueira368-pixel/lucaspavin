@@ -57,7 +57,7 @@ export function Hero() {
           <TextSplit text="Lucas Pavin" />
         </h1>
 
-        <motion.p
+        <p
           className="mt-8"
           style={{
             fontFamily: 'var(--body-font)',
@@ -66,12 +66,9 @@ export function Hero() {
             maxWidth: '520px',
             lineHeight: 1.7,
           }}
-          initial={prefersReduced ? {} : { opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           Sites profissionais que convertem visitantes em clientes
-        </motion.p>
+        </p>
 
         <motion.div
           className="mt-12 flex items-center gap-3"
