@@ -23,6 +23,8 @@ export function CustomCursor() {
     const onMove = (e: MouseEvent) => {
       mx = e.clientX
       my = e.clientY
+      // Garante que cursor esta visivel ao mover
+      document.documentElement.classList.remove('cursor-hidden')
     }
 
     const loop = () => {
@@ -36,8 +38,7 @@ export function CustomCursor() {
     document.addEventListener('mousemove', onMove, { passive: true })
     animId = requestAnimationFrame(loop)
 
-    // Event delegation — hover detection via mouseover/mouseout on document
-    // Works for all elements including those added later by ScrollReveal
+    // Event delegation — hover detection
     const onOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
       if (target.closest('a, button, [role="button"]')) {
@@ -50,15 +51,48 @@ export function CustomCursor() {
         ring.classList.remove('cursor-hover')
       }
     }
-
     document.addEventListener('mouseover', onOver, { passive: true })
     document.addEventListener('mouseout', onOut, { passive: true })
+
+    // Esconder cursor custom quando mouse sai da janela
+    // Mostra cursor nativo nesse estado (via classe cursor-hidden no html)
+    const onWindowLeave = () => {
+      document.documentElement.classList.add('cursor-hidden')
+    }
+    const onWindowEnter = () => {
+      document.documentElement.classList.remove('cursor-hidden')
+    }
+    // mouseleave do document = mouse saiu da janela
+    document.documentElement.addEventListener('mouseleave', onWindowLeave)
+    document.documentElement.addEventListener('mouseenter', onWindowEnter)
+
+    // Reset quando aba volta a ficar visivel (evita cursor invisivel ao voltar do Alt+Tab)
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        document.documentElement.classList.add('cursor-hidden')
+      }
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange)
+
+    // Reset ao focar/desfocar janela
+    const onBlur = () => document.documentElement.classList.add('cursor-hidden')
+    const onFocus = () => {
+      // Nao remove aqui — aguarda primeiro mousemove para remover
+    }
+    window.addEventListener('blur', onBlur)
+    window.addEventListener('focus', onFocus)
 
     return () => {
       document.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseover', onOver)
       document.removeEventListener('mouseout', onOut)
+      document.documentElement.removeEventListener('mouseleave', onWindowLeave)
+      document.documentElement.removeEventListener('mouseenter', onWindowEnter)
+      document.removeEventListener('visibilitychange', onVisibilityChange)
+      window.removeEventListener('blur', onBlur)
+      window.removeEventListener('focus', onFocus)
       cancelAnimationFrame(animId)
+      document.documentElement.classList.remove('cursor-hidden')
     }
   }, [prefersReduced])
 
@@ -69,6 +103,13 @@ export function CustomCursor() {
       <style>{`
         @media (hover: hover) {
           html, body, a, button, [role="button"] { cursor: none !important; }
+          /* Quando cursor saiu da janela ou aba perdeu foco: mostrar cursor nativo e esconder custom */
+          html.cursor-hidden, html.cursor-hidden body, html.cursor-hidden a, html.cursor-hidden button, html.cursor-hidden [role="button"] {
+            cursor: auto !important;
+          }
+          html.cursor-hidden .cursor-ring, html.cursor-hidden .cursor-dot {
+            opacity: 0 !important;
+          }
         }
         @media (hover: none) {
           .cursor-ring, .cursor-dot { display: none !important; }
@@ -90,6 +131,7 @@ export function CustomCursor() {
           width: 6px; height: 6px; border-radius: 50%;
           background: var(--accent);
           pointer-events: none;
+          transition: opacity 0.2s;
         }
       `}</style>
       <div ref={ringRef} className="cursor-ring" />

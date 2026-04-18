@@ -22,7 +22,7 @@ export function Contact() {
       <div className="container-main relative z-10 text-center">
         <ScrollReveal>
           <div className="flex justify-center">
-            <SectionEyebrow number="04" label="Contato" />
+            <SectionEyebrow number="06" label="Contato" />
           </div>
           <h2
             className="mt-2"
@@ -35,7 +35,7 @@ export function Contact() {
               color: 'var(--text-0)',
             }}
           >
-            Vamos Conversar?
+            Eleve o nível do seu negócio
           </h2>
         </ScrollReveal>
 
@@ -53,7 +53,7 @@ export function Contact() {
               textAlign: 'center',
             }}
           >
-            Tem um projeto em mente? Me manda uma mensagem e a gente conversa sem compromisso.
+            Me conta sobre seu projeto. Primeira conversa sem compromisso, 5 dias para seu site ficar pronto.
           </p>
         </ScrollReveal>
 
@@ -70,8 +70,8 @@ export function Contact() {
                 fontWeight: 600,
                 background: 'var(--gold-gradient)',
                 color: 'var(--bg-deep)',
-                padding: '18px 40px',
-                borderRadius: '14px',
+                padding: '12px 36px',
+                borderRadius: '12px',
                 boxShadow: 'var(--gold-glow)',
               }}
             >

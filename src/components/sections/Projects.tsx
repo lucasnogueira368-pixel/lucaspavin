@@ -1,14 +1,12 @@
 'use client'
 
 import { SectionEyebrow } from '@/components/ui/SectionEyebrow'
-import { ProjectCard } from '@/components/ui/ProjectCard'
+import { ProjectCarousel } from '@/components/ui/ProjectCarousel'
+import { ProjectDescription } from '@/components/ui/ProjectDescription'
 import { ScrollReveal } from '@/components/effects/ScrollReveal'
 import { projects } from '@/data/projects'
 
 export function Projects() {
-  const featured = projects.find((p) => p.featured)
-  const regular = projects.filter((p) => !p.featured)
-
   return (
     <section
       id="projetos"
@@ -33,20 +31,37 @@ export function Projects() {
           </h2>
         </ScrollReveal>
 
-        <div className="mt-14 flex flex-col gap-6">
-          {featured && (
-            <ScrollReveal delay={0.1}>
-              <ProjectCard project={featured} />
-            </ScrollReveal>
-          )}
+        <div className="mt-14 flex flex-col" style={{ gap: '140px' }}>
+          {projects.map((project, i) => (
+            <ScrollReveal key={project.slug} delay={0.1}>
+              <div>
+                {/* Case indicator */}
+                <span
+                  className="gold-metallic mb-6 block"
+                  style={{
+                    fontFamily: 'var(--label-font)',
+                    fontSize: '0.7rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.12em',
+                  }}
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {regular.map((project, i) => (
-              <ScrollReveal key={project.slug} delay={0.15 + i * 0.1}>
-                <ProjectCard project={project} />
-              </ScrollReveal>
-            ))}
-          </div>
+                {/* Desktop: 2 colunas */}
+                <div className="hidden md:grid gap-12" style={{ gridTemplateColumns: '1fr 1fr' }}>
+                  <ProjectCarousel slides={project.slides} name={project.name} url={project.url} />
+                  <ProjectDescription project={project} />
+                </div>
+
+                {/* Mobile: stack vertical */}
+                <div className="md:hidden flex flex-col gap-6">
+                  <ProjectCarousel slides={project.slides} name={project.name} url={project.url} />
+                  <ProjectDescription project={project} />
+                </div>
+              </div>
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>
