@@ -47,8 +47,8 @@ export function HowItWorks() {
           {steps.map((step, i) => {
             const Icon = iconMap[step.icon] ?? Code
             return (
-              <ScrollReveal key={step.number} delay={0.1 + i * 0.08}>
-                <li className="relative flex flex-col items-center text-center list-none">
+              <li key={step.number} className="relative flex flex-col items-center text-center list-none">
+                <ScrollReveal delay={0.1 + i * 0.08}>
                   {i < steps.length - 1 && (
                     <div
                       aria-hidden="true"
@@ -57,7 +57,7 @@ export function HowItWorks() {
                     />
                   )}
                   <div
-                    className="relative flex items-center justify-center"
+                    className="relative flex items-center justify-center mx-auto"
                     style={{
                       width: '48px',
                       height: '48px',
@@ -70,7 +70,7 @@ export function HowItWorks() {
                     <Icon size={20} style={{ color: 'var(--accent)' }} />
                   </div>
                   <span
-                    className="mt-4 gold-metallic"
+                    className="mt-4 gold-metallic block"
                     style={{
                       fontFamily: 'var(--label-font)',
                       fontSize: '0.7rem',
@@ -102,8 +102,8 @@ export function HowItWorks() {
                   >
                     {step.description}
                   </p>
-                </li>
-              </ScrollReveal>
+                </ScrollReveal>
+              </li>
             )
           })}
         </ol>
@@ -113,8 +113,8 @@ export function HowItWorks() {
           {steps.map((step, i) => {
             const Icon = iconMap[step.icon] ?? Code
             return (
-              <ScrollReveal key={step.number} delay={0.1 + i * 0.08}>
-                <li className="flex gap-5 list-none">
+              <li key={step.number} className="flex gap-5 list-none">
+                <ScrollReveal delay={0.1 + i * 0.08} className="flex gap-5 w-full">
                   <div className="flex flex-col items-center">
                     <div
                       className="flex items-center justify-center flex-shrink-0"
@@ -171,8 +171,8 @@ export function HowItWorks() {
                       {step.description}
                     </p>
                   </div>
-                </li>
-              </ScrollReveal>
+                </ScrollReveal>
+              </li>
             )
           })}
         </ol>

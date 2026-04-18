@@ -30,5 +30,13 @@
     "react-dom": "^19.2.5",
     "sharp": "^0.34.5",
     "typescript": "^6.0.2"
-  }
+  },
+  "browserslist": [
+    "chrome >= 92",
+    "firefox >= 90",
+    "safari >= 15.4",
+    "edge >= 92",
+    "ios_saf >= 15.4",
+    "samsung >= 17"
+  ]
 }

@@ -68,7 +68,7 @@ export function Hero() {
           }}
           initial={prefersReduced ? {} : { opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.4, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
         >
           Sites profissionais que convertem visitantes em clientes
         </motion.p>
@@ -77,7 +77,7 @@ export function Hero() {
           className="mt-12 flex items-center gap-3"
           initial={prefersReduced ? {} : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.8 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
         >
           <div style={{ width: '40px', height: '1px', background: 'var(--accent-dark)' }} />
           <span
