@@ -86,18 +86,18 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Lucas Pavin | Desenvolvedor Web',
-    description: 'Landing pages profissionais que convertem visitantes em clientes',
+    description: 'Lucas Pavin — Desenvolvedor Web com IA. Landing pages, sistemas e automação pra empresas. PageSpeed 90+, SEO técnico completo.',
     url: SITE_URL,
     siteName: 'Lucas Pavin',
     locale: 'pt_BR',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'Lucas Pavin - Desenvolvedor Web' }],
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Lucas Pavin - Desenvolvedor Web' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Lucas Pavin | Desenvolvedor Web',
-    description: 'Landing pages profissionais que convertem visitantes em clientes',
-    images: ['/og-image.png'],
+    description: 'Lucas Pavin — Desenvolvedor Web com IA. Landing pages, sistemas e automação pra empresas. PageSpeed 90+, SEO técnico completo.',
+    images: ['/og-image.jpg'],
   },
   other: { 'theme-color': '#050505' },
 }
