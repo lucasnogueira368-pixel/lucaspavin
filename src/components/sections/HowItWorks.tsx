@@ -12,7 +12,7 @@ const steps = [
   { number: '01', icon: 'MessageCircle', title: 'Briefing', description: 'Conversa inicial via WhatsApp. Entendo seu negócio, público e objetivo.' },
   { number: '02', icon: 'Palette', title: 'Design', description: 'Você recebe o layout navegável em até 2 dias úteis. 2 rodadas de revisão inclusas.' },
   { number: '03', icon: 'Code', title: 'Desenvolvimento', description: 'Código próprio, otimizado, responsivo. Nada de template.' },
-  { number: '04', icon: 'Send', title: 'Entrega', description: '5 dias úteis após o material completo. Domínio, SSL e monitoramento configurados.' },
+  { number: '04', icon: 'Send', title: 'Entrega', description: 'De 3 a 5 dias úteis conforme o pacote. Domínio, SSL e monitoramento configurados.' },
   { number: '05', icon: 'Settings', title: 'Manutenção', description: 'Planos opcionais cuidando de hospedagem, backup, alterações e SEO ativo.' },
 ]
 
@@ -47,17 +47,24 @@ export function HowItWorks() {
           {steps.map((step, i) => {
             const Icon = iconMap[step.icon] ?? Code
             return (
-              <li key={step.number} className="relative flex flex-col items-center text-center list-none">
-                <ScrollReveal delay={0.1 + i * 0.08}>
-                  {i < steps.length - 1 && (
-                    <div
-                      aria-hidden="true"
-                      className="absolute top-6 left-1/2 w-full"
-                      style={{ height: '1px', background: 'var(--border-hover)', zIndex: 0 }}
-                    />
-                  )}
+              <li key={step.number} className="relative list-none">
+                {i < steps.length - 1 && (
                   <div
-                    className="relative flex items-center justify-center mx-auto"
+                    aria-hidden="true"
+                    className="absolute"
+                    style={{
+                      top: '23px',
+                      left: '50%',
+                      width: '100%',
+                      height: '1px',
+                      background: 'var(--border-hover)',
+                      zIndex: 0,
+                    }}
+                  />
+                )}
+                <ScrollReveal delay={0.1 + i * 0.08} className="w-full flex flex-col items-center text-center">
+                  <div
+                    className="relative flex items-center justify-center"
                     style={{
                       width: '48px',
                       height: '48px',
@@ -70,7 +77,7 @@ export function HowItWorks() {
                     <Icon size={20} style={{ color: 'var(--accent)' }} />
                   </div>
                   <span
-                    className="mt-4 gold-metallic block"
+                    className="mt-4 gold-metallic"
                     style={{
                       fontFamily: 'var(--label-font)',
                       fontSize: '0.7rem',

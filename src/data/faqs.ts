@@ -7,7 +7,7 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     question: 'Quanto tempo demora pra ficar pronto?',
-    answer: '5 dias úteis após o recebimento de todo o material (fotos, logo). Se o material estiver completo na segunda, sua LP está no ar na sexta seguinte.',
+    answer: 'A partir de 3 dias úteis após o recebimento de todo o material (fotos, logo). O prazo varia conforme o pacote escolhido.',
   },
   {
     question: 'Posso pedir alterações depois de pronto?',
@@ -24,5 +24,21 @@ export const faqs: Faq[] = [
   {
     question: 'Funciona em celular?',
     answer: 'Todos os sites são mobile-first. Testados em iPhone e Android antes da entrega. Se não funcionar perfeito no seu celular, ajusto sem custo.',
+  },
+  {
+    question: 'Qual a diferença entre Express e Renovação?',
+    answer: 'Express é pra quem está começando do zero, você não tem site ainda e precisa do primeiro no ar. Renovação é pra quem já tem site e quer subir o nível técnico: faço um site novo do zero usando o atual como referência de identidade e copy, com briefing reduzido (a base já existe).',
+  },
+  {
+    question: 'O que está incluso no plano Essencial?',
+    answer: 'O Essencial (R$ 50/mês) cobre o básico pra manter seu site funcionando: hospedagem, backup automático e atualização técnica (correções, segurança, compatibilidade). Pra alterações de conteúdo ou monitoramento de SEO, recomendo Profissional ou Premium.',
+  },
+  {
+    question: 'Você faz manutenção em sites que não foram feitos por você?',
+    answer: 'Para manutenção contínua, não. Os planos mensais são exclusivos pra sites construídos com a stack que uso (Next.js + estrutura otimizada). O caminho pra quem já tem site e quer entrar nessa estrutura é o pacote Renovação: refaço do zero usando o atual como referência, e depois você pode contratar qualquer plano de manutenção.',
+  },
+  {
+    question: 'Posso trocar de plano de manutenção depois?',
+    answer: 'Sim, sem multa. Pode subir (Essencial → Profissional → Premium) ou descer a qualquer momento. O ajuste vale a partir do mês seguinte.',
   },
 ]

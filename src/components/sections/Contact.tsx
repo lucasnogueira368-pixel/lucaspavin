@@ -2,6 +2,7 @@
 
 import { SectionEyebrow } from '@/components/ui/SectionEyebrow'
 import { ScrollReveal } from '@/components/effects/ScrollReveal'
+import { MatrixText } from '@/components/effects/MatrixText'
 import { WHATSAPP_URL, INSTAGRAM_URL, INSTAGRAM_HANDLE } from '@/lib/constants'
 
 export function Contact() {
@@ -22,7 +23,7 @@ export function Contact() {
       <div className="container-main relative z-10 text-center">
         <ScrollReveal>
           <div className="flex justify-center">
-            <SectionEyebrow number="06" label="Contato" />
+            <SectionEyebrow number="07" label="Contato" />
           </div>
           <h2
             className="mt-2"
@@ -35,7 +36,7 @@ export function Contact() {
               color: 'var(--text-0)',
             }}
           >
-            Eleve o nível do seu negócio
+            <MatrixText text="Eleve o nível do seu negócio" />
           </h2>
         </ScrollReveal>
 
@@ -53,7 +54,7 @@ export function Contact() {
               textAlign: 'center',
             }}
           >
-            Me conta sobre seu projeto. Primeira conversa sem compromisso, 5 dias para seu site ficar pronto.
+            Me conta sobre seu projeto. Primeira conversa sem compromisso, a partir de 3 dias para seu site ficar pronto.
           </p>
         </ScrollReveal>
 

@@ -18,7 +18,7 @@ export function DifferentialCard({ icon, title, metric, description }: Different
 
   return (
     <div
-      className="glass-card h-full flex flex-col"
+      className="differential-card relative h-full flex flex-col"
       style={{ padding: '32px' }}
     >
       <Icon

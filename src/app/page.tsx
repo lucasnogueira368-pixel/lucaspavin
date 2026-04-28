@@ -6,6 +6,7 @@ import { Projects } from '@/components/sections/Projects'
 import { Differentials } from '@/components/sections/Differentials'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 // import { Testimonials } from '@/components/sections/Testimonials' // (oculto). ***
+import { ServicesPlans } from '@/components/sections/ServicesPlans'
 import { Faq } from '@/components/sections/Faq'
 import { Contact } from '@/components/sections/Contact'
 import { WhatsAppFloat } from '@/components/ui/WhatsAppFloat'
@@ -24,6 +25,7 @@ export default function Home() {
         <Differentials />
         <HowItWorks />
         {/* <Testimonials /> — (oculto) */}
+        <ServicesPlans />
         <Faq />
         <Contact />
       </main>
