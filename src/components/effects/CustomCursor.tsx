@@ -66,18 +66,20 @@ export function CustomCursor() {
     document.documentElement.addEventListener('mouseleave', onWindowLeave)
     document.documentElement.addEventListener('mouseenter', onWindowEnter)
 
-    // Reset quando aba volta a ficar visivel (evita cursor invisivel ao voltar do Alt+Tab)
+    // Ao voltar do Alt+Tab: força cursor custom visivel imediatamente
+    // (Windows nem sempre re-renderiza o cursor nativo apos focus, deixando tela sem cursor algum)
     const onVisibilityChange = () => {
       if (document.visibilityState === 'visible') {
-        document.documentElement.classList.add('cursor-hidden')
+        document.documentElement.classList.remove('cursor-hidden')
       }
     }
     document.addEventListener('visibilitychange', onVisibilityChange)
 
-    // Reset ao focar/desfocar janela
+    // Blur: esconde custom (cursor nativo aparece em outras janelas/elementos do SO)
+    // Focus: volta o custom imediatamente, sem esperar mousemove
     const onBlur = () => document.documentElement.classList.add('cursor-hidden')
     const onFocus = () => {
-      // Nao remove aqui — aguarda primeiro mousemove para remover
+      document.documentElement.classList.remove('cursor-hidden')
     }
     window.addEventListener('blur', onBlur)
     window.addEventListener('focus', onFocus)

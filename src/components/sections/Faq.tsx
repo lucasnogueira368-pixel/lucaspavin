@@ -22,7 +22,7 @@ export function Faq() {
     >
       <div className="container-main" style={{ maxWidth: '800px' }}>
         <ScrollReveal>
-          <SectionEyebrow number="05" label="FAQ" />
+          <SectionEyebrow number="06" label="FAQ" />
           <h2
             className="mt-2"
             style={{

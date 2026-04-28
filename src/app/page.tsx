@@ -6,6 +6,7 @@ import { Projects } from '@/components/sections/Projects'
 import { Differentials } from '@/components/sections/Differentials'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 // import { Testimonials } from '@/components/sections/Testimonials' // TEMP: oculto ate termos depoimentos reais. Ver docs/PLACEHOLDERS.md
+import { ServicesPlans } from '@/components/sections/ServicesPlans'
 import { Faq } from '@/components/sections/Faq'
 import { Contact } from '@/components/sections/Contact'
 import { WhatsAppFloat } from '@/components/ui/WhatsAppFloat'
@@ -24,6 +25,7 @@ export default function Home() {
         <Differentials />
         <HowItWorks />
         {/* <Testimonials /> — TEMP: oculto ate termos depoimentos reais */}
+        <ServicesPlans />
         <Faq />
         <Contact />
       </main>

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
-import { SITE_URL } from '@/lib/constants'
+import { SITE_URL, SITE_DESCRIPTION } from '@/lib/constants'
 import { faqs } from '@/data/faqs'
 import './globals.css'
 
@@ -81,7 +81,7 @@ const jsonLd = {
 
 export const metadata: Metadata = {
   title: 'Lucas Pavin | Desenvolvedor Web | Landing Pages Profissionais',
-  description: 'Desenvolvedor web especializado em landing pages profissionais para negócios locais. Design exclusivo, PageSpeed 90+, SEO completo e otimização para IA. Seu site pronto em 5 dias úteis.',
+  description: SITE_DESCRIPTION,
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: '/' },
   openGraph: {

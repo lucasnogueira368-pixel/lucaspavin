@@ -137,6 +137,85 @@ body {
 }
 
 /* ============================================================
+   DIFFERENTIAL CARD — Animated border (luz passando na borda)
+   Desktop: ativa no hover. Mobile: sempre rodando, mais discreta.
+   ============================================================ */
+
+.differential-card {
+  position: relative;
+  background: rgba(212, 168, 83, 0.04);
+  border: 1px solid rgba(212, 168, 83, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  isolation: isolate;
+}
+
+.differential-card:hover {
+  border-color: rgba(212, 168, 83, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Borda animada: gradiente atravessa só a borda (mask exclude). */
+.differential-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(240, 208, 128, 0.55) 50%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 200% 200%;
+  background-position: 100% 0%;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+
+/* Desktop: borda só anima quando hover. */
+@media (hover: hover) and (pointer: fine) {
+  .differential-card:hover::before {
+    opacity: 1;
+    animation: differential-border-flow 2.4s linear infinite;
+  }
+}
+
+/* Mobile/touch: borda sempre rodando, mais discreta. */
+@media (hover: none) {
+  .differential-card::before {
+    opacity: 0.7;
+    animation: differential-border-flow 6s linear infinite;
+  }
+}
+
+@keyframes differential-border-flow {
+  0%   { background-position: 100% 0%; }
+  100% { background-position: -100% 0%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .differential-card::before {
+    animation: none !important;
+  }
+}
+
+/* ============================================================
    ANIMATIONS
    ============================================================ */
 
