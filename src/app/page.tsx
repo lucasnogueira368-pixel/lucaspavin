@@ -5,7 +5,7 @@ import { About } from '@/components/sections/About'
 import { Projects } from '@/components/sections/Projects'
 import { Differentials } from '@/components/sections/Differentials'
 import { HowItWorks } from '@/components/sections/HowItWorks'
-// import { Testimonials } from '@/components/sections/Testimonials' // (oculto). ***
+// import { Testimonials } from '@/components/sections/Testimonials'
 import { ServicesPlans } from '@/components/sections/ServicesPlans'
 import { Faq } from '@/components/sections/Faq'
 import { Contact } from '@/components/sections/Contact'
@@ -24,7 +24,7 @@ export default function Home() {
         <Projects />
         <Differentials />
         <HowItWorks />
-        {/* <Testimonials /> — (oculto) */}
+        {/* <Testimonials /> */}
         <ServicesPlans />
         <Faq />
         <Contact />
