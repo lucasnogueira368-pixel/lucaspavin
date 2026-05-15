@@ -15,6 +15,10 @@
   --color-text-1: #C4B99A;
   --color-text-2: #A89D7A;
   --color-text-3: #998B6D;
+
+  --font-heading: var(--heading-font), sans-serif;
+  --font-body: var(--body-font), system-ui, sans-serif;
+  --font-label: var(--label-font), ui-monospace, monospace;
 }
 
 :root {
@@ -196,11 +200,15 @@ body {
   }
 }
 
-/* Mobile/touch: borda sempre rodando, mais discreta. */
+/* Mobile/touch: borda anima só quando a section está visível (perf mobile). */
 @media (hover: none) {
   .differential-card::before {
     opacity: 0.7;
     animation: differential-border-flow 6s linear infinite;
+    animation-play-state: paused;
+  }
+  .diff-anim-active .differential-card::before {
+    animation-play-state: running;
   }
 }
 

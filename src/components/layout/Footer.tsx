@@ -17,7 +17,7 @@ export function Footer() {
       style={{
         background: 'var(--bg-deep)',
         borderTop: '1px solid var(--border)',
-        padding: '48px 24px',
+        padding: '36px 24px',
       }}
     >
       <div

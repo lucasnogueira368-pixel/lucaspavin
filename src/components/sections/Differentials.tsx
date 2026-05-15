@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { SectionEyebrow } from '@/components/ui/SectionEyebrow'
 import { DifferentialCard } from '@/components/ui/DifferentialCard'
 import { ScrollReveal } from '@/components/effects/ScrollReveal'
@@ -44,8 +45,25 @@ const differentials = [
 ]
 
 export function Differentials() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el || typeof IntersectionObserver === 'undefined') return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        el.classList.toggle('diff-anim-active', entry.isIntersecting)
+      },
+      { rootMargin: '100px' }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       id="diferenciais"
       className="section-padding"
       style={{ background: 'var(--bg-base)' }}
