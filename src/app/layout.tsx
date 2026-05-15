@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Space_Grotesk, Inter, JetBrains_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import { SITE_URL, SITE_DESCRIPTION } from '@/lib/constants'
 import { faqs } from '@/data/faqs'
 import './globals.css'
@@ -125,6 +126,7 @@ export default function RootLayout({
           Pular para o conteúdo
         </a>
         {children}
+        <Analytics />
       </body>
     </html>
   )
