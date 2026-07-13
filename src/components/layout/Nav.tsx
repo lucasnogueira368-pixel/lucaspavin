@@ -58,7 +58,7 @@ export function Nav() {
             aria-label="Lucas Pavin - ir para o topo"
           >
             <Image
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Lucas Pavin"
               width={48}
               height={30}

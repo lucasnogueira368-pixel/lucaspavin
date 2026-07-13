@@ -1,7 +1,3 @@
-'use client'
-
-import { motion, useReducedMotion } from 'framer-motion'
-
 interface TextSplitProps {
   text: string
   className?: string
@@ -9,36 +5,31 @@ interface TextSplitProps {
   charDelay?: number
 }
 
+const NBSP = ' '
+
+// Animação de entrada em CSS puro (não depende de JS/framer): a animação
+// dispara já na primeira pintura da página, então NÃO segura o LCP como a
+// versão anterior (framer-motion, que só animava após a hidratação do JS).
+// O visual é idêntico — mesmo fade + slide/rotação por letra.
 export function TextSplit({
   text,
   className,
   baseDelay = 0.2,
   charDelay = 0.035,
 }: TextSplitProps) {
-  const prefersReduced = useReducedMotion()
-
-  if (prefersReduced) {
-    return <span className={className}>{text}</span>
-  }
-
   return (
     <>
+      {/* Texto real para leitores de tela / agentes (o resto é aria-hidden) */}
       <span className="sr-only">{text}</span>
       <span className={className} aria-hidden="true">
         {text.split('').map((char, i) => (
-          <motion.span
+          <span
             key={`${char}-${i}`}
-            initial={{ opacity: 0, y: 40, rotateX: 40 }}
-            animate={{ opacity: 1, y: 0, rotateX: 0 }}
-            transition={{
-              duration: 0.5,
-              delay: baseDelay + i * charDelay,
-              ease: [0.16, 1, 0.3, 1],
-            }}
-            style={{ display: 'inline-block' }}
+            className="text-split-char"
+            style={{ animationDelay: `${baseDelay + i * charDelay}s` }}
           >
-            {char === ' ' ? '\u00A0' : char}
-          </motion.span>
+            {char === ' ' ? NBSP : char}
+          </span>
         ))}
       </span>
     </>

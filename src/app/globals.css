@@ -142,6 +142,29 @@ body {
   }
 }
 
+/* Animação do título do herói (TextSplit) em CSS puro: dispara na 1ª pintura
+   da página (não espera o JS/framer hidratar), o que mantém o LCP baixo.
+   Visual idêntico à versão anterior (mesmo fade + slide/rotação por letra). */
+.text-split-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) rotateX(40deg);
+  animation: textSplitIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes textSplitIn {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .text-split-char {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
 @media (max-width: 768px) {
   .section-padding {
     padding-top: 80px;
