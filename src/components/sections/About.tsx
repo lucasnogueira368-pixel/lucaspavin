@@ -3,7 +3,7 @@
 import { SectionEyebrow } from '@/components/ui/SectionEyebrow'
 import { ScrollReveal } from '@/components/effects/ScrollReveal'
 
-const badges = ['Mobile-First', 'Performance', 'SEO', 'Otimização para IA']
+const badges = ['Mobile-First', 'Performance', 'Otimização para IA', 'SEO']
 
 
 export function About() {
@@ -56,10 +56,11 @@ export function About() {
               >
                 Especialidades
               </p>
-              <div className="flex flex-wrap gap-3">
-                {badges.map((badge) => (
+              <div className="grid grid-cols-[auto_auto] gap-3 w-fit">
+                {badges.map((badge, i) => (
                   <span
                     key={badge}
+                    className={i % 2 === 1 ? 'justify-self-end' : 'justify-self-start'}
                     style={{
                       fontFamily: 'var(--label-font)',
                       fontSize: '0.72rem',

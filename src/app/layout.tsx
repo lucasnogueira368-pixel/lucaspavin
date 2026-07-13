@@ -6,24 +6,23 @@ import { SITE_URL, SITE_DESCRIPTION } from '@/lib/constants'
 import { faqs } from '@/data/faqs'
 import './globals.css'
 
+// Fontes variáveis: um único arquivo cobre todos os pesos (mais leve que
+// baixar um arquivo por peso, e sem risco de "falso-negrito").
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
   variable: '--heading-font',
-  weight: ['600', '700'],
   display: 'swap',
 })
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--body-font',
-  weight: ['400', '500', '600', '700'],
   display: 'swap',
 })
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   variable: '--label-font',
-  weight: ['500'],
   display: 'swap',
 })
 
@@ -59,7 +58,7 @@ const jsonLd = {
     {
       '@type': 'CreativeWork',
       name: 'Shiba Pet Care',
-      url: 'https://shiba-petcare.netlify.app/',
+      url: 'https://shibapetcare.com.br/',
       creator: { '@type': 'Person', name: 'Lucas Pavin' },
       description: 'Site profissional para pet shop premium',
     },
@@ -69,6 +68,20 @@ const jsonLd = {
       url: 'https://www.patasdecasaessence.com.br/',
       creator: { '@type': 'Person', name: 'Lucas Pavin' },
       description: 'Landing page para pet spa premium',
+    },
+    {
+      '@type': 'CreativeWork',
+      name: 'Orbya Residences',
+      url: 'https://orbyacarrao.com.br/',
+      creator: { '@type': 'Person', name: 'Lucas Pavin' },
+      description: 'Landing page para empreendimento residencial de alto padrao na Vila Carrao, Sao Paulo',
+    },
+    {
+      '@type': 'CreativeWork',
+      name: 'Central Seguros ABC & Sul',
+      url: 'https://centralsegurosabcsul.com.br/',
+      creator: { '@type': 'Person', name: 'Lucas Pavin' },
+      description: 'Site institucional para corretora de seguros no ABC Paulista, Itatiba e Santa Catarina',
     },
     {
       '@type': 'FAQPage',

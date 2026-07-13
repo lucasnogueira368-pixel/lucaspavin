@@ -95,12 +95,6 @@ const plans: Plan[] = [
   },
 ]
 
-const monthlyPlans = [
-  { name: 'Essencial', price: 'R$ 50/mês', includes: 'Hosting, backup, atualização técnica' },
-  { name: 'Profissional', price: 'R$ 100/mês', includes: 'Essencial + 1 ajuste/mês + monitoramento SEO' },
-  { name: 'Premium', price: 'R$ 200/mês', includes: 'Profissional + 3 ajustes/mês + relatório mensal' },
-]
-
 function PlanCard({ plan }: { plan: Plan }) {
   const isHighlight = plan.highlight
 
@@ -339,10 +333,11 @@ export function ServicesPlans() {
           ))}
         </div>
 
-        {/* Faixa de Planos Mensais */}
-        <ScrollReveal delay={0.3}>
+        {/* Faixa de Planos Mensais.
+            Espaçamento via padding-top no wrapper (padding não sofre margin-collapse
+            como a margem sofria através do ScrollReveal): 32px mobile / 112px desktop. */}
+        <ScrollReveal delay={0.3} className="plans-maint-gap">
           <div
-            className="mt-20"
             style={{
               background: 'rgba(212, 168, 83, 0.03)',
               border: '1px solid var(--border)',
@@ -385,61 +380,11 @@ export function ServicesPlans() {
                   color: 'var(--text-1)',
                 }}
               >
-                Mantenha seu site atualizado, otimizado e cobrindo seu negócio sem virar dor de cabeça.
+                Mantenha seu site atualizado, otimizado e cobrindo seu negócio a partir de R$50,00.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {monthlyPlans.map((mp) => (
-                <div
-                  key={mp.name}
-                  style={{
-                    padding: '20px',
-                    background: 'var(--bg-surface)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 'var(--radius-sm)',
-                    textAlign: 'center',
-                  }}
-                >
-                  <p
-                    style={{
-                      fontFamily: 'var(--heading-font)',
-                      fontSize: '0.95rem',
-                      fontWeight: 600,
-                      color: 'var(--text-0)',
-                      letterSpacing: '-0.01em',
-                    }}
-                  >
-                    {mp.name}
-                  </p>
-                  <p
-                    className="mt-2"
-                    style={{
-                      fontFamily: 'var(--heading-font)',
-                      fontSize: '1.3rem',
-                      fontWeight: 700,
-                      color: 'var(--accent)',
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    {mp.price}
-                  </p>
-                  <p
-                    className="mt-2"
-                    style={{
-                      fontFamily: 'var(--body-font)',
-                      fontSize: '0.82rem',
-                      lineHeight: 1.5,
-                      color: 'var(--text-2)',
-                    }}
-                  >
-                    {mp.includes}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ textAlign: 'center', marginTop: '56px' }}>
+            <div style={{ textAlign: 'center', marginTop: '8px' }}>
               <a
                 href={WHATSAPP_URL_PLANOS}
                 target="_blank"
