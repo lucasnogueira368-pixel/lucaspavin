@@ -114,7 +114,6 @@ function PlanCard({ plan }: { plan: Plan }) {
     >
       {plan.badge && (
         <span
-          aria-label="Produto novo"
           className="absolute"
           style={{
             top: '-12px',
@@ -131,7 +130,8 @@ function PlanCard({ plan }: { plan: Plan }) {
             whiteSpace: 'nowrap',
           }}
         >
-          {plan.badge}
+          <span className="sr-only">Produto novo</span>
+          <span aria-hidden="true">{plan.badge}</span>
         </span>
       )}
 

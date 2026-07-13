@@ -51,6 +51,7 @@ export function ScoreCard({ score, label, variant = 'large' }: ScoreCardProps) {
     return (
       <div
         ref={ref}
+        role="img"
         className="flex flex-col items-center gap-1.5 flex-1"
         aria-label={`${label}: ${score} de 100`}
         style={{ minWidth: '0', flexBasis: '0' }}
@@ -116,6 +117,7 @@ export function ScoreCard({ score, label, variant = 'large' }: ScoreCardProps) {
   return (
     <div
       ref={ref}
+      role="img"
       className="flex flex-col items-center justify-center"
       aria-label={`Pontuação de ${label}: ${score} de 100`}
     >

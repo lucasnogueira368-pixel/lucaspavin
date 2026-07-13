@@ -96,7 +96,10 @@ export function MatrixText({
   }, [text, duration, cycleSpeed, prefersReduced])
 
   return (
-    <span ref={ref} className={className} style={style} aria-label={text}>
+    <span ref={ref} className={className} style={style}>
+      {/* Texto real para leitores de tela / agentes de IA (aria-label em <span>
+          genérico é ARIA inválido; sr-only + aria-hidden é o padrão correto). */}
+      <span className="sr-only">{text}</span>
       <span aria-hidden="true">{output}</span>
     </span>
   )
