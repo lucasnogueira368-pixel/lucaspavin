@@ -12,7 +12,7 @@ interface TextSplitProps {
 export function TextSplit({
   text,
   className,
-  baseDelay = 0.4,
+  baseDelay = 0.2,
   charDelay = 0.035,
 }: TextSplitProps) {
   const prefersReduced = useReducedMotion()

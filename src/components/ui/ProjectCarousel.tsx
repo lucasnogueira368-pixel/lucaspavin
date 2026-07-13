@@ -2,7 +2,6 @@
 
 import { useCallback } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
-import Image from 'next/image'
 import { ChevronLeft, ChevronRight, ArrowUpRight } from 'lucide-react'
 
 interface ProjectCarouselProps {
@@ -55,13 +54,16 @@ export function ProjectCarousel({ slides, name, url }: ProjectCarouselProps) {
               {slides.map((slide, i) => (
                 <div key={i} className="flex-[0_0_100%] min-w-0">
                   <div className="relative aspect-video">
-                    <Image
-                      src={slide}
-                      alt={`${name} - imagem ${i + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                    />
+                    <picture>
+                      <source srcSet={slide.replace(/\.webp$/, '.avif')} type="image/avif" />
+                      <img
+                        src={slide}
+                        alt={`${name} - imagem ${i + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                      />
+                    </picture>
                     {/* Overlay sutil ao hover */}
                     <div
                       aria-hidden="true"

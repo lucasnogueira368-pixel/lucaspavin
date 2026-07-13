@@ -35,7 +35,9 @@ export function Nav() {
 
   return (
     <>
+      <header>
       <nav
+        aria-label="Navegação principal"
         className="fixed top-0 left-0 w-full transition-all duration-300"
         style={{
           zIndex: 100,
@@ -134,6 +136,7 @@ export function Nav() {
           </button>
         </div>
       </nav>
+      </header>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
