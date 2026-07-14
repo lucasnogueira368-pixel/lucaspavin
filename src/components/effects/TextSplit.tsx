@@ -14,7 +14,7 @@ const NBSP = ' '
 export function TextSplit({
   text,
   className,
-  baseDelay = 0.2,
+  baseDelay = 0,
   charDelay = 0.035,
 }: TextSplitProps) {
   return (
