@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { SITE_URL, WHATSAPP_URL_LINKS } from '@/lib/constants'
 import { TrackedLink } from '@/components/links/TrackedLink'
+import { SocialLinks } from '@/components/links/SocialLinks'
 
 /**
  * Rota /links — destino do link da bio do Instagram.
@@ -14,9 +15,9 @@ import { TrackedLink } from '@/components/links/TrackedLink'
  * As tags Open Graph ficam: noindex nao impede o preview no WhatsApp.
  */
 export const metadata: Metadata = {
-  title: 'Lucas Pavin | Criação de sites e landing pages',
+  title: 'Lucas Pavin | Landing pages de alta conversão',
   description:
-    'Fale comigo no WhatsApp, veja sites que eu entreguei ou confira preços e prazos. Criação de sites e landing pages em São Caetano e região.',
+    'Landing pages de alta conversão para negócios que querem crescer. Fale comigo no WhatsApp, veja sites que eu entreguei ou confira preços e prazos.',
   // Self-canonical: sem isto a rota herda o canonical '/' do layout raiz e
   // sai apontando para a home, sinal conflitante com o noindex abaixo.
   alternates: { canonical: '/links' },
@@ -26,9 +27,9 @@ export const metadata: Metadata = {
     googleBot: { index: false, follow: false },
   },
   openGraph: {
-    title: 'Lucas Pavin | Criação de sites e landing pages',
+    title: 'Lucas Pavin | Landing pages de alta conversão',
     description:
-      'Fale comigo no WhatsApp, veja sites que eu entreguei ou confira preços e prazos.',
+      'Landing pages de alta conversão para negócios que querem crescer. Fale comigo no WhatsApp ou veja os sites que eu entreguei.',
     url: `${SITE_URL}/links`,
     siteName: 'Lucas Pavin',
     locale: 'pt_BR',
@@ -39,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Lucas Pavin | Criação de sites e landing pages',
+    title: 'Lucas Pavin | Landing pages de alta conversão',
     description:
-      'Fale comigo no WhatsApp, veja sites que eu entreguei ou confira preços e prazos.',
+      'Landing pages de alta conversão para negócios que querem crescer. Fale comigo no WhatsApp ou veja os sites que eu entreguei.',
     images: ['/og-image.jpg'],
   },
   other: { 'theme-color': '#050505' },
@@ -77,8 +78,8 @@ export default function LinksPage() {
         <div
           className="flex items-center justify-center"
           style={{
-            width: '96px',
-            height: '96px',
+            width: '84px',
+            height: '84px',
             borderRadius: '50%',
             border: '1px solid var(--border-hover)',
             background: 'var(--bg-surface)',
@@ -104,7 +105,7 @@ export default function LinksPage() {
             letterSpacing: '-0.04em',
             lineHeight: 1.1,
             color: 'var(--text-0)',
-            marginTop: '20px',
+            marginTop: '14px',
           }}
         >
           Lucas Pavin
@@ -117,23 +118,15 @@ export default function LinksPage() {
             lineHeight: 1.4,
             color: 'var(--text-1)',
             marginTop: '8px',
+            maxWidth: '320px',
           }}
         >
-          Criação de sites e landing pages
+          Landing pages de alta conversão para negócios que querem crescer.
         </p>
 
-        <p
-          style={{
-            fontFamily: 'var(--label-font)',
-            fontSize: '0.7rem',
-            letterSpacing: '0.12em',
-            textTransform: 'uppercase',
-            color: 'var(--text-3)',
-            marginTop: '6px',
-          }}
-        >
-          São Caetano e região
-        </p>
+        <div style={{ marginTop: '14px' }}>
+          <SocialLinks />
+        </div>
 
         <div
           className="flex flex-col"
@@ -154,7 +147,7 @@ export default function LinksPage() {
 
         <div
           className="flex flex-col items-center"
-          style={{ gap: '8px', marginTop: '32px' }}
+          style={{ gap: '8px', marginTop: '22px' }}
         >
           <Image
             src="/images/logo.webp"

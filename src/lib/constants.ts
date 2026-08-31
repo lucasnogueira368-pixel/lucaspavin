@@ -14,7 +14,7 @@ export const WHATSAPP_URL_COMPLETA = waUrl('Oi Lucas, vim pelo site. Quero a Com
 export const WHATSAPP_URL_PLANOS = waUrl('Oi Lucas, vim pelo site. Quero saber dos planos mensais.')
 
 // Rota /links (destino do link da bio do Instagram)
-export const WHATSAPP_URL_LINKS = waUrl('Oi Lucas, vi seu perfil e queria saber sobre um site.')
+export const WHATSAPP_URL_LINKS = waUrl('Oi Lucas, vi seu perfil e queria saber mais sobre a criação de um site.')
 
 export const INSTAGRAM_URL = 'https://instagram.com/lucaspavin.dev'
 export const INSTAGRAM_HANDLE = '@lucaspavin.dev'
