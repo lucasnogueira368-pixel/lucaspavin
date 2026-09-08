@@ -50,62 +50,35 @@ export const metadata: Metadata = {
 
 export default function LinksPage() {
   return (
-    <main
-      id="main-content"
-      className="relative flex flex-col items-center justify-center overflow-hidden"
-      style={{
-        minHeight: '100svh',
-        background: 'var(--bg-deep)',
-        padding: '24px',
-      }}
-    >
-      <div
-        aria-hidden="true"
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 70% 45% at 50% 30%, rgba(212, 168, 83, 0.07) 0%, transparent 70%)',
-        }}
-      />
+    <main id="main-content" className="links-page">
+      {/* Retrato de meio corpo sangrando na tela — topo no celular, metade
+          direita no desktop. <picture> em vez de next/image porque o build e
+          estatico (output: 'export' + images.unoptimized): o avif precisa ser
+          oferecido na mao, como nos cards de projeto. */}
+      <picture className="links-photo">
+        <source srcSet="/images/lucas-pavin.avif" type="image/avif" />
+        <img
+          src="/images/lucas-pavin.webp"
+          alt="Lucas Pavin, desenvolvedor de landing pages"
+          width={904}
+          height={1210}
+          fetchPriority="high"
+          decoding="async"
+        />
+      </picture>
 
-      <div
-        className="relative flex flex-col items-center text-center"
-        style={{ zIndex: 10, width: '100%', maxWidth: '360px' }}
-      >
-        {/* Sem foto de rosto disponivel: o logo entra como fallback previsto
-            no briefing. Trocar por <Image src="/images/lucas.webp" width={96}
-            height={96} className="rounded-full object-cover" /> quando houver. */}
-        <div
-          className="flex items-center justify-center"
-          style={{
-            width: '84px',
-            height: '84px',
-            borderRadius: '50%',
-            border: '1px solid var(--border-hover)',
-            background: 'var(--bg-surface)',
-            flexShrink: 0,
-          }}
-        >
-          <Image
-            src="/images/logo.webp"
-            alt="Lucas Pavin"
-            width={64}
-            height={39}
-            priority
-            fetchPriority="high"
-            style={{ width: '64px', height: '39px' }}
-          />
-        </div>
+      <div className="links-veil" aria-hidden="true" />
 
+      <div className="links-content">
         <h1
+          className="links-title"
           style={{
             fontFamily: 'var(--heading-font)',
             fontWeight: 700,
-            fontSize: 'clamp(1.6rem, 7vw, 2rem)',
+            fontSize: 'clamp(1.9rem, 6vw, 3rem)',
             letterSpacing: '-0.04em',
-            lineHeight: 1.1,
+            lineHeight: 1.05,
             color: 'var(--text-0)',
-            marginTop: '14px',
           }}
         >
           Lucas Pavin
@@ -117,8 +90,8 @@ export default function LinksPage() {
             fontSize: '0.95rem',
             lineHeight: 1.4,
             color: 'var(--text-1)',
-            marginTop: '8px',
-            maxWidth: '320px',
+            marginTop: '10px',
+            maxWidth: '340px',
           }}
         >
           Landing pages de alta conversão para negócios que querem crescer.
@@ -130,7 +103,7 @@ export default function LinksPage() {
 
         <div
           className="flex flex-col"
-          style={{ width: '100%', gap: '12px', marginTop: '32px' }}
+          style={{ width: '100%', gap: '12px', marginTop: '26px' }}
         >
           <TrackedLink href={WHATSAPP_URL_LINKS} event="links_whatsapp" variant="primary" external>
             Falar comigo no WhatsApp
@@ -145,10 +118,9 @@ export default function LinksPage() {
           </TrackedLink>
         </div>
 
-        <div
-          className="flex flex-col items-center"
-          style={{ gap: '8px', marginTop: '22px' }}
-        >
+        {/* marginTop fica no CSS (.links-footer): no celular e 'auto', para o
+            rodape descer ate a base da tela. Inline aqui, venceria a regra. */}
+        <div className="links-footer flex flex-col" style={{ gap: '8px' }}>
           <Image
             src="/images/logo.webp"
             alt=""

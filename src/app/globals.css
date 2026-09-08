@@ -286,3 +286,146 @@ body.nav-open {
   touch-action: none;
   overscroll-behavior: contain;
 }
+
+/* ============================================================
+   ROTA /links — hub do link da bio
+   A foto sangra na tela em vez de viver numa caixa: no celular ela
+   ocupa o topo de borda a borda, no desktop a metade direita inteira.
+   Assim o retrato aparece em tamanho de heroi e as bordas encostam na
+   viewport — nao ha moldura para dissolver, so o lado que encara o
+   conteudo precisa de fade.
+   ============================================================ */
+
+.links-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--bg-deep);
+}
+
+.links-photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 68svh;
+  z-index: 0;
+}
+
+.links-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* O recorte ja e meio corpo; o cover so acerta a proporcao da tela.
+     Ancorado no topo para a cabeca nunca ser cortada. */
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+
+/* Dissolve a base da foto no fundo — o nome comeca sobre essa faixa. */
+.links-veil {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 68svh;
+  z-index: 1;
+  pointer-events: none;
+  /* Escurece progressivamente o terco de baixo da foto: e sobre essa faixa
+     que o nome e a bio ficam, e o contraste precisa segurar o texto. */
+  background: linear-gradient(
+    to top,
+    var(--bg-deep) 0%,
+    rgba(5, 5, 5, 0.9) 35%,
+    rgba(5, 5, 5, 0.62) 55%,
+    rgba(5, 5, 5, 0) 82%
+  );
+}
+
+.links-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+  /* Comeca na altura do peito e ocupa o resto da tela; o rodape vai para a
+     base pelo margin-top auto, entao a folga que sobra fica distribuida em
+     vez de virar um vazio depois do ultimo botao. */
+  flex: 1;
+  margin: 34svh auto 0;
+  padding: 0 24px 20px;
+}
+
+.links-title { margin-top: 0; }
+.links-footer {
+  align-items: center;
+  /* Desce ate a base da tela; o padding garante respiro se a folga for zero. */
+  margin-top: auto;
+  padding-top: 24px;
+}
+
+/* Tela baixa: encolhe a foto e sobe o conteudo em dois degraus para os tres
+   botoes continuarem acima da dobra — 800px pega o Galaxy/Pixel base, 720px o
+   iPhone SE. Antes do bloco de desktop de proposito: la a foto volta a 100%. */
+@media (max-height: 800px) {
+  .links-photo,
+  .links-veil { height: 64svh; }
+  .links-content { margin-top: 33svh; }
+}
+
+@media (max-height: 720px) {
+  .links-photo,
+  .links-veil { height: 60svh; }
+  .links-content { margin-top: 31svh; }
+}
+
+@media (min-width: 900px) {
+  .links-page {
+    justify-content: center;
+    /* Largura amarrada a altura na proporcao da propria foto (0.75): assim o
+       cover quase nao corta e o enquadramento continua sendo meio corpo em
+       qualquer tela, larga ou baixa. So o teto de 52% impede que a foto
+       invada a coluna dos botoes. */
+    --photo-w: min(52%, 76svh);
+  }
+
+  /* Faixa direita da tela, do topo ao rodape. */
+  .links-photo,
+  .links-veil {
+    left: auto;
+    right: 0;
+    width: var(--photo-w);
+    height: 100%;
+  }
+
+  /* Gradiente medido pela largura da foto, nao pela da tela — acompanha o
+     --photo-w quando ele muda. */
+  .links-veil {
+    background: linear-gradient(
+      to right,
+      var(--bg-deep) 0%,
+      rgba(5, 5, 5, 0.6) 32%,
+      rgba(5, 5, 5, 0) 68%
+    );
+  }
+
+  .links-content {
+    flex: 0 0 auto;
+    align-items: flex-start;
+    text-align: left;
+    max-width: 420px;
+    margin: 0 auto 0 max(7vw, 48px);
+    padding: 0;
+  }
+
+  .links-footer {
+    align-items: flex-start;
+    margin-top: 20px;
+    padding-top: 0;
+  }
+}
