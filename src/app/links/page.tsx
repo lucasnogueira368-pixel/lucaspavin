@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
 import { SITE_URL, WHATSAPP_URL_LINKS } from '@/lib/constants'
 import { TrackedLink } from '@/components/links/TrackedLink'
 import { SocialLinks } from '@/components/links/SocialLinks'
@@ -127,9 +126,13 @@ export default function LinksPage() {
             aria-hidden="true"
             width={40}
             height={24}
-            style={{ width: '40px', height: '24px', opacity: 0.5 }}
+            style={{ width: '40px', height: '24px' }}
           />
-          <Link
+          {/* <a> nativo, nao next/link: o next/link pre-carregaria o JS da
+              home inteira (~73 KB) em segundo plano, gastando o 4G de quem
+              chega pelo Instagram — e aqui nao ha React para navegar. */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- ver comentario acima */}
+          <a
             href="/"
             className="transition-colors hover:opacity-70"
             style={{
@@ -139,7 +142,7 @@ export default function LinksPage() {
             }}
           >
             lucaspavin.com.br
-          </Link>
+          </a>
         </div>
       </div>
     </main>

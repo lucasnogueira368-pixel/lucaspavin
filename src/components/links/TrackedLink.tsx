@@ -1,7 +1,3 @@
-'use client'
-
-import { track } from '@vercel/analytics'
-
 type Variant = 'primary' | 'secondary'
 
 interface TrackedLinkProps {
@@ -49,12 +45,18 @@ const variantStyle: Record<Variant, React.CSSProperties> = {
  * carregamento normal do navegador ja posiciona a pagina direto na secao,
  * enquanto a navegacao client-side dispararia a rolagem suave global desde
  * o topo — que e exatamente o atrito que esta pagina existe para remover.
+ *
+ * Sem onClick nem 'use client': o /links sai do build sem o JavaScript do
+ * React (ver tools/strip-links-js.mjs). O clique e contado pelo atributo
+ * data-track, lido por um script inline de poucas linhas que o pos-build
+ * injeta na pagina. Em `npm run dev` o evento nao dispara — o Analytics
+ * tambem nao envia nada fora de producao.
  */
 export function TrackedLink({ href, event, variant, external, children }: TrackedLinkProps) {
   return (
     <a
       href={href}
-      onClick={() => track(event)}
+      data-track={event}
       {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
       className="transition-all duration-300 hover:scale-[1.02] active:scale-[0.99]"
       style={{ ...baseStyle, ...variantStyle[variant] }}

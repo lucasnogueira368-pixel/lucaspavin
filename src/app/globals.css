@@ -384,6 +384,35 @@ body.nav-open {
   .links-content { margin-top: 31svh; }
 }
 
+/* Janela intermediaria mais larga que alta (tablet deitado, navegador
+   estreito): ainda e o layout de celular, mas com a foto de borda a borda o
+   cover precisa ampliar tanto que o meio corpo vira close de rosto. Aqui a
+   largura segue a altura na proporcao da imagem, centralizada, e as laterais
+   dissolvem no fundo. Celular e iPad em pe nao entram nesta regra. */
+@media (min-width: 600px) and (max-width: 899px) and (min-aspect-ratio: 1/1) {
+  .links-photo,
+  .links-veil {
+    left: 50%;
+    right: auto;
+    width: auto;
+    aspect-ratio: 904 / 1210;
+    transform: translateX(-50%);
+  }
+
+  .links-veil {
+    background:
+      linear-gradient(
+        to top,
+        var(--bg-deep) 0%,
+        rgba(5, 5, 5, 0.9) 35%,
+        rgba(5, 5, 5, 0.62) 55%,
+        rgba(5, 5, 5, 0) 82%
+      ),
+      linear-gradient(to right, var(--bg-deep) 0%, rgba(5, 5, 5, 0) 18%),
+      linear-gradient(to left, var(--bg-deep) 0%, rgba(5, 5, 5, 0) 18%);
+  }
+}
+
 @media (min-width: 900px) {
   .links-page {
     justify-content: center;
@@ -392,39 +421,69 @@ body.nav-open {
        qualquer tela, larga ou baixa. So o teto de 52% impede que a foto
        invada a coluna dos botoes. */
     --photo-w: min(52%, 76svh);
+    --content-w: 420px;
+    /* A faixa esquerda da foto e so fundo desfocado; o texto pode avancar
+       sobre ela sem encostar no retrato. */
+    --overlap: calc(var(--photo-w) * 0.12);
+    /* Texto + foto formam um bloco unico centralizado na tela, em vez de
+       cada um grudar numa borda com um vazio no meio. O piso de 48px segura
+       o respiro lateral nas telas estreitas. */
+    --content-x: max(
+      48px,
+      calc((100% - var(--content-w) - var(--photo-w) + var(--overlap)) / 2)
+    );
   }
 
-  /* Faixa direita da tela, do topo ao rodape. */
+  /* Coluna colada a direita do texto, do topo ao rodape da tela. */
   .links-photo,
   .links-veil {
-    left: auto;
-    right: 0;
+    left: calc(var(--content-x) + var(--content-w) - var(--overlap));
+    right: auto;
     width: var(--photo-w);
     height: 100%;
   }
 
-  /* Gradiente medido pela largura da foto, nao pela da tela — acompanha o
-     --photo-w quando ele muda. */
+  /* Gradientes medidos pela largura da foto, nao pela da tela — acompanham o
+     --photo-w quando ele muda. Como a foto nao encosta mais na borda
+     direita, esse lado tambem dissolve no fundo. Duas camadas de background,
+     nao mascara: dispensa mask-composite. */
   .links-veil {
-    background: linear-gradient(
-      to right,
-      var(--bg-deep) 0%,
-      rgba(5, 5, 5, 0.6) 32%,
-      rgba(5, 5, 5, 0) 68%
-    );
+    background:
+      /* Base da foto some no fundo: fica visivel so do cotovelo para cima,
+         o mesmo meio corpo que o celular mostra. */
+      linear-gradient(
+        to top,
+        var(--bg-deep) 0%,
+        var(--bg-deep) 18%,
+        rgba(5, 5, 5, 0.75) 32%,
+        rgba(5, 5, 5, 0) 50%
+      ),
+      linear-gradient(
+        to left,
+        var(--bg-deep) 0%,
+        rgba(5, 5, 5, 0) 14%
+      ),
+      linear-gradient(
+        to right,
+        var(--bg-deep) 0%,
+        rgba(5, 5, 5, 0.6) 32%,
+        rgba(5, 5, 5, 0) 68%
+      );
   }
 
   .links-content {
     flex: 0 0 auto;
     align-items: flex-start;
     text-align: left;
-    max-width: 420px;
-    margin: 0 auto 0 max(7vw, 48px);
+    max-width: var(--content-w);
+    margin: 0 auto 0 var(--content-x);
     padding: 0;
   }
 
+  /* O bloco fica alinhado a esquerda com os botoes (herda do .links-content),
+     mas logo e URL centralizados entre si. */
   .links-footer {
-    align-items: flex-start;
+    align-items: center;
     margin-top: 20px;
     padding-top: 0;
   }
