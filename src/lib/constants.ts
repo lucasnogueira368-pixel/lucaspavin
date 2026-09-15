@@ -7,14 +7,14 @@ export const WHATSAPP_NUMBER = '5511965432623'
 const waUrl = (text: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`
 
-export const WHATSAPP_URL = waUrl('Oi Lucas, vi seu portfólio e tenho interesse em um site profissional')
-export const WHATSAPP_URL_EXPRESS = waUrl('Oi Lucas, vim pelo site. Quero a Express.')
-export const WHATSAPP_URL_RENOVACAO = waUrl('Oi Lucas, vim pelo site. Quero a Renovação.')
-export const WHATSAPP_URL_COMPLETA = waUrl('Oi Lucas, vim pelo site. Quero a Completa.')
-export const WHATSAPP_URL_PLANOS = waUrl('Oi Lucas, vim pelo site. Quero saber dos planos mensais.')
+export const WHATSAPP_URL = waUrl('Olá, Lucas! Vi seu portfólio e tenho interesse em um site profissional para o meu negócio. Pode me passar mais informações?')
+export const WHATSAPP_URL_EXPRESS = waUrl('Olá, Lucas! Vi seu portfólio e gostaria de mais informações sobre a Express. Pode me explicar como funciona?')
+export const WHATSAPP_URL_RENOVACAO = waUrl('Olá, Lucas! Vi seu portfólio e gostaria de mais informações sobre a Renovação. Pode me explicar como funciona?')
+export const WHATSAPP_URL_COMPLETA = waUrl('Olá, Lucas! Vi seu portfólio e gostaria de mais informações sobre a Completa. Pode me explicar como funciona?')
+export const WHATSAPP_URL_PLANOS = waUrl('Olá, Lucas! Vi seu portfólio e gostaria de saber mais sobre os planos mensais. Pode me explicar como funcionam?')
 
 // Rota /links (destino do link da bio do Instagram)
-export const WHATSAPP_URL_LINKS = waUrl('Oi Lucas, vi seu perfil e queria saber mais sobre a criação de um site.')
+export const WHATSAPP_URL_LINKS = waUrl('Olá, Lucas! Vi seu perfil no Instagram e gostaria de saber mais sobre a criação de um site. Pode me passar mais informações?')
 
 export const INSTAGRAM_URL = 'https://instagram.com/lucaspavin.dev'
 export const INSTAGRAM_HANDLE = '@lucaspavin.dev'
