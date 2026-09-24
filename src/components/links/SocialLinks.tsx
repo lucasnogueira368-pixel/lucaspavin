@@ -23,6 +23,26 @@ const iconStyle: React.CSSProperties = {
   lineHeight: 0,
 }
 
+function GlobeIcon({ size = 22 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M2 12h20" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  )
+}
+
 function InstagramIcon({ size = 22 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -61,6 +81,26 @@ export function SocialLinks() {
         style={iconStyle}
       >
         <LinkedinIcon />
+      </a>
+      {/* Atalho para a home ao lado das redes. Com texto, ao contrario dos
+          logos: um globo sozinho nao diz "meu site". <a> nativo pelo mesmo
+          motivo do link do rodape — next/link pre-carregaria o JS da home. */}
+      {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- ver comentario acima */}
+      <a
+        href="/"
+        className="transition-opacity hover:opacity-70"
+        style={{
+          ...iconStyle,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '7px',
+          fontFamily: 'var(--body-font)',
+          fontSize: '0.9rem',
+          lineHeight: 1,
+        }}
+      >
+        <GlobeIcon />
+        Meu site
       </a>
     </div>
   )
